@@ -7,10 +7,10 @@
 
 using namespace std;
 
-stringstream ss;
 
 
-// setters
+
+// constructor
 Date::Date(int m, int d, int y) {
 
 	month = m;
@@ -53,16 +53,18 @@ const int Date::getYear() {
 
 // MONTHS
 
-const string Date::MONTHS[12] = { "January", "February", "March", "April", "May", "June", 
-							      "July", "August", "September", "October", "November", "December" };
+const string Date::MONTHS[12] = { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", 
+							      "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" };
 
 string Date::print() {
 	
+	stringstream ss;
 	
-	ss << left << setw(10) << MONTHS[month - 1] << setw(3) << day << setw(5) << year << endl;
+	ss << left << setw(10) << MONTHS[month - 1];
+	ss << left << setw(4) << day;
+	ss << left << setw(5) << year << endl;
 	
 	return ss.str();
-	
 }
 
 const bool Date::compare(Date &d1, Date &d2) {
