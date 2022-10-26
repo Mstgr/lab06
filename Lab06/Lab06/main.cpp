@@ -15,8 +15,7 @@ int main(int argc, char const* argv[]) {
 	//*********************** READ THE TEXT FILE
 
 	ifstream readFile;
-	string output;
-	int place = 0;
+
 	int array[100];
 	int count = 0;
 
@@ -41,41 +40,50 @@ int main(int argc, char const* argv[]) {
 	
 
 	// objects and vector here
-	Date d[10];
 	
+	
+	vector<Date> dates;
 	
 	// assign the instances to the dates from the file
 	for (int i = 1; i < count; i += 3) {
 		
+		Date d(array[i], array[i + 1], array[i + 2]);
+
+		dates.push_back(d);
+		/*
 		d[place].setMonth(array[i]);
 		d[place].setDay(array[i + 1]);
 		d[place].setYear(array[i + 2]);
+		
 		place++;
-	}
 
-	vector<Date> dates;
-
-	// add all instances into the vector
-	for (int i = 0; i < array[0]; i++) {
+		// add all instances into the vector
+		for (int i = 0; i < array[0]; i++) {
 		dates.push_back(d[i]);
+		}
+		*/
 	}
+
+
+	//COMPARE
 
 	sort(dates.begin(), dates.end(), Date::compare);
 
-	//Date::compare
+	// PRINT
 
-	for (int i = 0; i < array[0]; i++) {
-		//cout << "Dates: " << d[i].getMonth() << " " << d[i].getDay() << " " << d[i].getYear() << endl;
-	}
+	ofstream outFile;
 
-	for (int i = 0; i < array[0]; i++) {
+	outFile.open("output.txt");
+
+	for (auto &dates : dates) {
 		//cout << "Date: " << Date::MONTHS[dates[i].getMonth() - 1] << "/" << dates[i].getDay() << "/" << dates[i].getYear() << endl;
 
 		//output += dates[i].print();
-		cout << dates[i].print();
+		outFile << dates.print();
 	}
 	
-	//cout << output << endl;
+	outFile.close();
+	
 	
 	// pure command line file reader
 	/*
