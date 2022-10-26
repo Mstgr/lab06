@@ -4,13 +4,19 @@
 class Date {
 
 private:
-	int month	= { 1 };
-	int day		= { 1 };
-	int year	= { 1990 };
+	int month;
+	int day;
+	int year;
 
 public: 
 
-	Date() = default;
+	Date() {
+
+		month = { 1 };
+		day = { 1 };
+		year = { 1990 };
+
+	}
 	Date(int, int, int);
 
 	static const std::string MONTHS[12];
